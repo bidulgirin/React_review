@@ -40,36 +40,35 @@
                 4. 주석문은 브라켓으로 감싸줘야 주석처리가 된다,
                     태그 사이에 써도 주석처리가 됨 ex) <h1 //여기에다가 주석처리 가능 ></h1>
 
-import 할때
-import MyName from './MyName'; 요거랑
-import React, { Component } from 'react'; 요거
-이런식으로 import 하는데 무슨 차이일까?
+        import 할때
+        import MyName from './MyName'; 요거랑
+        import React, { Component } from 'react'; 요거
+        이런식으로 import 하는데 무슨 차이일까?
 
-{ } 는 class형 컴포넌트를 export하여 import할때 가져올때 사용
-그냥 {} 없이 파일이름(본인이직접지정)이 써져있을때는 함수형 컴포넌트를 export 시켰을때 사용한다
+        { } 는 class형 컴포넌트를 export하여 import할때 가져올때 사용
+        그냥 {} 없이 파일이름(본인이직접지정)이 써져있을때는 함수형 컴포넌트를 export 시켰을때 사용한다
 
-예쁜 코드 정렬을 위해 setting.json 에 코드를 바꿨다
-{
-...
-"editor.formatOnSave": true, -> 저장할때 예쁘게 정렬되어라
-"[typescriptreact]": {
-"editor.defaultFormatter": "esbenp.prettier-vscode"
-},
-"[typescript]": {
-"editor.defaultFormatter": "esbenp.prettier-vscode"
-},
-"[javascript]": {
-"editor.defaultFormatter": "esbenp.prettier-vscode"
-},
-"[javascriptreact]": {
-"editor.defaultFormatter": "esbenp.prettier-vscode"
-},
-"[json]": {
-"editor.defaultFormatter": "esbenp.prettier-vscode"
-}
-}
+        예쁜 코드 정렬을 위해 setting.json 에 코드를 바꿨다 prettire 문서를 함 보면 나와있음
 
-props 와 state
+        [Props 와 state]
 
-props
-부모가 자식에게 값을 전달할때 사용한다
+        props
+        부모가 자식에게 값을 전달할때 사용한다
+
+        부모에서 값을 전달하려면 부모 태그 안에 <MyName 값이름="값"></MyName> 값을 적고
+        자식 컴포넌트에 {this.props.값이름} 이런식으로 받아올수있다
+
+        그리고 부모값을 전달 받지 못했을때 기본값으로 설정할 수있는 방법은 두가지 인데
+
+        1. 클래스혹은 함수형 컴포넌트 코드안 render() 하기 전에
+        static defaultProps = {
+        name: '기본이름',
+        };
+        이런식으로 static defaultProps값을 적어주거나
+
+        컴포넌트 코드 밖에
+        MyName.defaultProps = {
+        name: '밖에서사용하는 기본이름',
+        };
+
+        이런식으로 사용하면 되고 전자가 더 최신코드이다.
