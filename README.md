@@ -72,3 +72,22 @@
         };
 
         이런식으로 사용하면 되고 전자가 더 최신코드이다.
+
+        너무 중요한 api! 리액트의 생명주기
+
+        나타나는것 :
+        constructor - 컴포넌트가 생성될때 제일 먼저 실행되는 생성자 함수이다( 기본값을 설정할때 주로 사용 )
+        getDerivedStateFromProps - props를 state에서 동기화를 시킬때 씀
+        render - DOM을 만들고 어떤 값을 전달하고 화면에 표시하는 등의 일
+
+        componentDidMount - 주로 외부 라이브러리나 네트워크 ajax...api 등 처리, 컴포넌트에서 필요한 데이터등을 호출할때 사용
+        업데이트되는것 :
+
+        getDerivedStateFromProps - props를 state에서 동기화를 시킬때 씀
+        shouldComponentUpdate - 업데이트될때 최적화해줌 (중요) , 성능을 향상시킬수있는 포인트임(virtual Dom에도 렌더링 할지 말지도 정해줌)
+        getSnapshotBeforeUpdate - 렌더가 된 다음에 업데이트하기 바로 직전에 호출되는 함수
+
+        componentDidUpdate - 업데이트가 된 다음 호출되는 함수
+
+        사라지는것 :
+        componentWillUnmount - 나타난 컴포넌트등을 사라지게 함

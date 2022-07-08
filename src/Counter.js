@@ -17,16 +17,22 @@ class Counter extends Component {
     this.handleDecrease = this.handleDecrease.bind(this);
 
     /*
-   constructor은 컴포넌트가 만들어 질때마다 자동으로 실행되는 함수고 
-   super은 생성자함수로 Component가 extends 되어 있어있기때문에 
+   constructor은 컴포넌트가 만들어 질때마다 자동으로 호출되는 함수고
+   Component가 가지고 있는 생성자를 가져오는 것은 'super(props)' 라는 코드로 가져옴
+   Component가 extends 되어 있어있기때문에 Component에서 생성자를 가져올수있음
+   아래에 this.handleIncrease = this.handleIncrease.bind(this); 
    this가 무엇인지 명시해 줌으로써 
    밖에서 화살표함수가 아닌 그냥 함수로 적어도 this를 자동으로 인식하게 해줌
+
+   여기서 bind() 메서드의 역할은 
+   : 메소드가 호출되면 새로운 함수를 생성함
+   변수할당후 재호출을 할때  setTimeout등과 응용할때... 등 쓴다고 함
    
    */
   }
 
+  //화살표 함수 대신 그냥 function 함수를 썼다면 this가 인식이 안됨!
   handleIncrease = () => {
-    //화살표 함수 대신 그냥 function 함수를 썼다면 this가 인식이 안됨!
     this.setState({
       number: this.state.number + 1,
       color: 'blue',
