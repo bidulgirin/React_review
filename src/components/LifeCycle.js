@@ -7,7 +7,7 @@ class LifeCycle extends Component {
   }
 
   componentDidMount() {
-    console.log('componentDidMOunt');
+    console.log('componentDidMount');
     console.log(this.myDiv.getBoundingClientRect());
   }
   render() {

@@ -89,5 +89,9 @@
 
         componentDidUpdate - 업데이트가 된 다음 호출되는 함수
 
+
+        componentDidCatch - 특정 에러를 서버사이드에 전달하는 용도로 쓰임
+        사용자한테는 튕겼다라는 메세지를 보낼수있고 개발자에게도 이런 에러가 발생했다는 정보를 줄때 유용!
+
         사라지는것 :
         componentWillUnmount - 나타난 컴포넌트등을 사라지게 함
