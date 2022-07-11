@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import PhoneForm from './components/PhoneForm';
+import PhoneInfoList from './components/PhoneInfoList';
 
 class App extends Component {
   /*
@@ -47,7 +48,8 @@ class App extends Component {
     return (
       <div className="App">
         <PhoneForm onCreate={this.handleCreate} />
-        {JSON.stringify(this.state.information)}
+        {/* {JSON.stringify(this.state.information)} */}
+        <PhoneInfoList data={this.state.information} />
       </div>
     );
   }
