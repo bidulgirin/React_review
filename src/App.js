@@ -27,6 +27,7 @@ class App extends Component {
     배열 내장함수이기 때문에 ㅇㅋ
     값을 수정할때는 항상 setstate에다가 값을 입력할것
   */
+  //추가하기 기능
   handleCreate = (data) => {
     const { information } = this.state;
     this.setState({
@@ -45,11 +46,26 @@ class App extends Component {
     });
   };
 
-  // remove 만들기
+  // 삭제 기능
   handleRemove = (id) => {
     const { information } = this.state; // 비 구조 할당 this.state.information
     this.setState({
       information: information.filter((info) => info.id !== id),
+    });
+  };
+  //수정하기 기능
+  handleUpdate = (id, data) => {
+    const { information } = this.state;
+    this.setState({
+      information: information.map((info) => {
+        if (info.id === id) {
+          return {
+            id,
+            ...data,
+          };
+        }
+        return info;
+      }),
     });
   };
   render() {
@@ -62,7 +78,11 @@ class App extends Component {
         배열에 객체 값을 확인할때 쓰였음
         
         */}
-        <PhoneInfoList data={this.state.information} onRemove={this.handleRemove} />
+        <PhoneInfoList
+          data={this.state.information}
+          onRemove={this.handleRemove} //PhoneInfoList에 onRemove라는 함수로 넘겨준다
+          onUpdate={this.handleUpdate}
+        />
       </div>
     );
   }
