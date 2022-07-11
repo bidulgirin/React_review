@@ -39,17 +39,30 @@ class App extends Component {
         Object.assign({}, data, {
           /*Object.assign: 빈 객체 {} 에 data를 넣고 
           뒤에 있는 id 값도 넣어주겠다라는 의미*/
-          id: this.id++,
+          id: this.id++, // 아이디값이 0, 1, 2 ... 이런식으로 증가함
         }),
       ),
     });
   };
+
+  // remove 만들기
+  handleRemove = (id) => {
+    const { information } = this.state; // 비 구조 할당 this.state.information
+    this.setState({
+      information: information.filter((info) => info.id !== id),
+    });
+  };
   render() {
+    //PhoneInfoList 에다가 data값으로 this.state에 있는 information을 전달해주는것이다.
     return (
       <div className="App">
         <PhoneForm onCreate={this.handleCreate} />
-        {/* {JSON.stringify(this.state.information)} */}
-        <PhoneInfoList data={this.state.information} />
+        {/* {JSON.stringify(this.state.information)} 
+        메서드는 JavaScript 값이나 객체를 JSON 문자열로 변환합니다
+        배열에 객체 값을 확인할때 쓰였음
+        
+        */}
+        <PhoneInfoList data={this.state.information} onRemove={this.handleRemove} />
       </div>
     );
   }
